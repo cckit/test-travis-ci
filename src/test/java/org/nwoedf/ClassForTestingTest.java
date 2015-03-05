@@ -16,6 +16,6 @@ public class ClassForTestingTest {
 
     @Test
     public void test() {
-        assertEquals(1, objectForTesting.returnFour());
+        assertEquals(4, objectForTesting.returnFour());
     }
 }
