@@ -1,5 +1,17 @@
-apply plugin: 'java'
-apply plugin: 'eclipse'
+plugins {
+    id 'java'
+    id 'eclipse'
+    id 'net.saliman.cobertura' version '2.2.6'
+    id 'com.github.kt3k.coveralls' version '2.3.1'
+}
+
+configurations.all {
+    resolutionStrategy {
+        // Cobertura includes an ASM version that can't handle Java 8, ASM 5.0.3 handles Java8
+        force 'org.ow2.asm:asm:5.0.3'
+        forcedModules = [ 'org.ow2.asm:asm:5.0.3' ]
+    }
+}
 
 dependencies {
     compile group: 'commons-collections', name: 'commons-collections', version: '3.2'
@@ -9,3 +21,5 @@ dependencies {
 repositories {
     mavenCentral()
 }
+
+cobertura.coverageFormats = ['html', 'xml']
