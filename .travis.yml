@@ -1,6 +1,6 @@
 language: java
 
-after_success: gradle cobertura coveralls
+script: gradle cobertura -d
 
 jdk:
   - oraclejdk8
